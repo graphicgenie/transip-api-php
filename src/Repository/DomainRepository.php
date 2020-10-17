@@ -88,40 +88,6 @@ class DomainRepository extends ApiRepository
             'nameservers' => $nameservers,
             'dnsEntries'  => $dnsEntries,
         ];
-        $this->httpClient->post($this->getResourceUrl(), $parameters);
-    }
-
-    /**
-     * @param string         $domainName
-     * @param string         $authCode
-     * @param WhoisContact[] $contacts    optional
-     * @param Nameserver[]   $nameservers optional
-     * @param DnsEntry[]     $dnsEntries  optional
-     */
-    public function transfer(
-        string $domainName,
-        string $authCode,
-        array $contacts = [],
-        array $nameservers = [],
-        array $dnsEntries = []
-    ): void {
-        $parameters = [
-            'domainName'  => $domainName,
-            'authCode'    => $authCode,
-            'contacts'    => $contacts,
-            'nameservers' => $nameservers,
-            'dnsEntries'  => $dnsEntries,
-        ];
-        $this->httpClient->post($this->getResourceUrl(), $parameters);
-    }
-
-    public function update(Domain $domain): void
-    {
-        $this->httpClient->put($this->getResourceUrl($domain->getName()), ['domain' => $domain]);
-    }
-
-    public function cancel(string $domainName, string $endTime): void
-    {
-        $this->httpClient->delete($this->getResourceUrl($domainName), ['endTime' => $endTime]);
+//        $this->httpClient->post($this->getResourceUrl(), $parameters);
     }
 }
